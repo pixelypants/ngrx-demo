@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "swkb"
+  "defaultProject": "swkb",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
