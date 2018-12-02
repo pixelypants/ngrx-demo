@@ -24,3 +24,8 @@ export const getIsLoading = createSelector(getHeroesState, state => state.isLoad
 export const getCurrentPage = createSelector(getHeroesState, state => state.page);
 export const getIsFirstPage = createSelector(getHeroesState, state => !state.previous);
 export const getIsLastPage = createSelector(getHeroesState, state => !state.next);
+
+
+export const getRaceBetsState = createFeatureSelector<fromHeroes.State>('heroes');
+export const getHeroes = createSelector(getHeroesState, state => state.data);
+export const getIsLoading = createSelector(getHeroesState, state => state.isLoading);

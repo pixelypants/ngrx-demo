@@ -11,12 +11,13 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { HeroesModule } from './heroes/heroes.module';
-import { TrendingBetsRacingComponent } from './trending-bets-racing/trending-bets-racing.component';
+import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
+import { BetComponent } from './bet/bet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrendingBetsRacingComponent
+    BetComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import { TrendingBetsRacingComponent } from './trending-bets-racing/trending-bet
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    HeroesModule
+    HeroesModule,
+    TrendingBetsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
