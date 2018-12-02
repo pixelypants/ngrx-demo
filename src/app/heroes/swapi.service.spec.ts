@@ -1,12 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { SwapiService } from './swapi.service';
 
 describe('SwapiService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
-
-  it('should be created', () => {
-    const service: SwapiService = TestBed.get(SwapiService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [SwapiService]
+    });
   });
+
+  it('should be created', inject([SwapiService], (service: SwapiService) => {
+    expect(service).toBeTruthy();
+  }));
 });

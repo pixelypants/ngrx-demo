@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { AppEffects } from './app.effects';
 
-describe('AppEffects', () => {
+describe('AppService', () => {
   let actions$: Observable<any>;
   let effects: AppEffects;
 

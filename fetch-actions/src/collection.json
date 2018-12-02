@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "fetch-actions": {
+      "description": "A schematic to generate ngrx fetch actions.",
+      "factory": "./fetch-actions",
+      "schema": "./fetch-actions/schema.json",
+      "aliases": [
+        "fa"
+      ]
+    }
+  }
+}
