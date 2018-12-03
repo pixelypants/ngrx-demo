@@ -12,12 +12,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { HeroesModule } from './heroes/heroes.module';
 import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
-import { BetComponent } from './bet/bet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BetComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +24,7 @@ import { BetComponent } from './bet/bet.component';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    HeroesModule,
+    // HeroesModule,
     TrendingBetsModule
   ],
   providers: [],

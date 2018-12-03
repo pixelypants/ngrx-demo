@@ -1,4 +1,4 @@
-import { reducer, initialState } from './racing-bet.reducer';
+import { reducer, initialState } from './trending-bets.reducer';
 
 describe('RacingBet Reducer', () => {
   describe('unknown action', () => {

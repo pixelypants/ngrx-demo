@@ -37,6 +37,6 @@ export class HeroesEffects {
     );
 
   constructor(private actions$: Actions,
-              private store: Store<State>,
-              private service: SwapiService) {}
+    private store: Store<State>,
+    private service: SwapiService) { }
 }

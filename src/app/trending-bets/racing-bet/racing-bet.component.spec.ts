@@ -8,9 +8,9 @@ describe('RacingBetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RacingBetComponent ]
+      declarations: [RacingBetComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

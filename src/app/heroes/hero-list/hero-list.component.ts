@@ -27,7 +27,7 @@ export class HeroListComponent implements OnInit {
   isLast$: Observable<boolean>;
   isLoading$: Observable<boolean>;
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
     this.heroes$ = this.store.select(getHeroes);
