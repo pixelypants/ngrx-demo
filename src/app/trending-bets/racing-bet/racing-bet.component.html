@@ -1,26 +1,16 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title><strong>{{ bet.runnerName }}</strong></mat-card-title>
-  </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
+<div class="mat-row">
+  <div class="mat-cell">{{bet.raceType}}</div>
+  <div class="mat-cell">{{bet.meetingName}}</div>
+  <div class="mat-cell">{{bet.raceNumber}}</div>
+  <div class="mat-cell">{{bet.runnerNumber}}</div>
+  <div class="mat-cell">
+    <button class="button-win"
+            mat-raised-button>{{bet.returnWin}}</button>
+  </div>
+  <div class="mat-cell">
+    <button class="button-place"
+            mat-raised-button>{{bet.returnPlace}}</button>
+  </div>
+</div>
 
-    <div class="mat-table">
-      <div class="mat-header-row">
-        <div class="mat-header-cell">Meeting</div>
-        <div class="mat-header-cell">Race#</div>
-        <div class="mat-header-cell">Runner#</div>
-        <div class="mat-header-cell">Win</div>
-        <div class="mat-header-cell">Place</div>
-      </div>
-      <div class="mat-row">
-        <div class="mat-cell">{{bet.meetingName}}</div>
-        <div class="mat-cell">{{bet.raceNumber}}</div>
-        <div class="mat-cell">{{bet.runnerNumber}}</div>
-        <div class="mat-cell">{{bet.returnWin}}</div>
-        <div class="mat-cell">{{bet.returnPlace}}</div>
-      </div>
-    </div>
-
-  </mat-card-content>
-</mat-card>
+<!-- G=greyhound T=Harness R= horses -->
