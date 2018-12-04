@@ -2,19 +2,25 @@
   <mat-card-header>
     <mat-card-title><strong>{{ bet.runnerName }}</strong></mat-card-title>
   </mat-card-header>
+  <mat-divider></mat-divider>
   <mat-card-content>
-    <p>
-      Meeting: <strong>{{ bet.meetingName }}</strong>
-    </p>
-    <p>
-      Race: <strong>{{ bet.raceName }} - {{ bet.raceNumber }}</strong>
-    </p>
-    <p>
-      Runner #: <strong>{{ bet.runnerNumber }}</strong>
-    </p>
-    <p>
-      Win: <strong>{{ bet.returnWin }}</strong>
-      Place: <strong>{{ bet.returnPlace }}</strong>
-    </p>
+
+    <div class="mat-table">
+      <div class="mat-header-row">
+        <div class="mat-header-cell">Meeting</div>
+        <div class="mat-header-cell">Race#</div>
+        <div class="mat-header-cell">Runner#</div>
+        <div class="mat-header-cell">Win</div>
+        <div class="mat-header-cell">Place</div>
+      </div>
+      <div class="mat-row">
+        <div class="mat-cell">{{bet.meetingName}}</div>
+        <div class="mat-cell">{{bet.raceNumber}}</div>
+        <div class="mat-cell">{{bet.runnerNumber}}</div>
+        <div class="mat-cell">{{bet.returnWin}}</div>
+        <div class="mat-cell">{{bet.returnPlace}}</div>
+      </div>
+    </div>
+
   </mat-card-content>
 </mat-card>

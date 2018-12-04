@@ -1,8 +1,51 @@
-<racing-bet *ngFor="let bet of racingBets$ | async;" [bet]="bet">
-</racing-bet>
+<!-- <racing-bet *ngFor="let bet of racingBets$ | async;"
+            [bet]="bet">
+</racing-bet> -->
 
-<!-- <swkb-hero *ngFor="let bet of racingBets$ | async; trackBy: trackByUrl" [bet]="bet"></swkb-hero> -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>
+        <strong>Trending Bets</strong>
+        <!-- <i class="material-icons">whatshot</i> -->
+      </mat-card-title>
+      <mat-card-subtitle>Racing</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
 
-<div class="loader__bg" *ngIf="$true">
-  <mat-spinner class="loader" color="accent" mode="indeterminate" [diameter]="40" [value]="25"></mat-spinner>
+    <div class="mat-table">
+      <div class="mat-header-row">
+        <div class="mat-header-cell">Meeting</div>
+        <div class="mat-header-cell">Race#</div>
+        <div class="mat-header-cell">Runner#</div>
+        <div class="mat-header-cell">Win</div>
+        <div class="mat-header-cell">Place</div>
+      </div>
+      <div class="mat-row"
+           *ngFor="let bet of racingBets$ | async;">
+        <div class="mat-cell">{{bet.meetingName}}</div>
+        <div class="mat-cell">{{bet.raceNumber}}</div>
+        <div class="mat-cell">{{bet.runnerNumber}}</div>
+        <div class="mat-cell">
+          <button class="button-win"
+                  mat-raised-button>{{bet.returnWin}}</button>
+        </div>
+        <div class="mat-cell">
+          <button class="button-place"
+                  mat-raised-button>{{bet.returnPlace}}</button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="loader__bg"
+     *ngIf="isLoading$ | async">
+  <mat-spinner class="loader"
+               color="accent"
+               mode="indeterminate"
+               [diameter]="40"
+               [value]="25"></mat-spinner>
 </div>

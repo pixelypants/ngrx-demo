@@ -5,7 +5,7 @@ import { RacingBet } from "../models/trending-bets";
 @Component({
   selector: 'racing-bet',
   templateUrl: './racing-bet.component.html',
-  styleUrls: ['./racing-bet.component.css'],
+  styleUrls: ['./racing-bet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RacingBetComponent {

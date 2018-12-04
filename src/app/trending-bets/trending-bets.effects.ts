@@ -15,6 +15,9 @@ import { map, switchMap, catchError, withLatestFrom } from 'rxjs/operators';
 
 @Injectable()
 export class RacingBetEffects {
+
+  private toPayload = <T>(action: { payload: T }) => action.payload;
+
   @Effect()
   fetch$: Observable<RacingBetActions> = this.actions$
     .ofType(RacingBetActionTypes.FetchRacingBets)

@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule, } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RacingBetComponent } from './racing-bet/racing-bet.component';
 import { RacingBetListComponent } from './racing-bet-list/racing-bet-list.component';
@@ -23,6 +26,9 @@ import { TrendingBetsService } from "./trending-bets.service";
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatDividerModule,
+    MatListModule,
+    MatTableModule,
     MatProgressSpinnerModule,
     EffectsModule.forFeature([RacingBetEffects])
   ],
