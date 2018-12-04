@@ -9,5 +9,5 @@ import { RacingBet } from "../models/trending-bets";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RacingBetComponent {
-  @Input() racingBet: RacingBet;
+  @Input() bet: RacingBet;
 }

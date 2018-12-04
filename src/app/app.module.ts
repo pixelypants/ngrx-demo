@@ -10,7 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
-import { HeroesModule } from './heroes/heroes.module';
+// import { HeroesModule } from './heroes/heroes.module';
 import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
 
 @NgModule({
@@ -24,7 +24,7 @@ import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    HeroesModule,
+    // HeroesModule,
     TrendingBetsModule
   ],
   providers: [],
