@@ -30,7 +30,7 @@ export function reducer(state = initialState, action: RacingBetActions): State {
       return {
         ...state,
         isLoading: false,
-        data: action.payload,
+        data: action.payload.results,
       };
 
     case RacingBetActionTypes.FetchRacingBetsError:

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { RacingBetResponse } from "./models/trending-bets";
+import { RacingBetResponse, RacingBet } from "./models/trending-bets";
 import { HttpErrorResponse } from '@angular/common/http';
 
 export enum RacingBetActionTypes {
@@ -14,8 +14,12 @@ export class FetchRacingBets implements Action {
 
 export class FetchRacingBetsSuccess implements Action {
   readonly type = RacingBetActionTypes.FetchRacingBetsSuccess;
-
-  constructor(public payload: RacingBetResponse) { }
+  public payload: RacingBetResponse = {
+    results: []
+  }
+  constructor(public results: RacingBet[]) {
+    this.payload.results = results;
+  }
 }
 
 export class FetchRacingBetsError implements Action {

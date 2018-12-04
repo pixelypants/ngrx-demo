@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { RacingBetResponse } from './models/trending-bets';
+import { RacingBetResponse, RacingBet } from './models/trending-bets';
 
 @Injectable()
 export class TrendingBetsService {
@@ -12,12 +12,12 @@ export class TrendingBetsService {
 
   constructor(private http: HttpClient) { }
 
-  getRacingBets(): Observable<RacingBetResponse> {
+  getRacingBets(): Observable<RacingBet[]> {
     const options = {
       params: {}
     };
     const link = `${this.proxyurl}${this.baseUrl}propositions-racing?jurisdiction=NSW`;
 
-    return this.http.get<RacingBetResponse>(link, options);
+    return this.http.get<RacingBet[]>(link, options);
   }
 }
