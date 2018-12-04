@@ -14,6 +14,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { HeroesEffects } from './heroes.effects';
 
 @NgModule({
+  declarations: [
+    HeroListComponent,
+    HeroComponent
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -24,10 +28,6 @@ import { HeroesEffects } from './heroes.effects';
     MatProgressSpinnerModule,
     EffectsModule.forFeature([HeroesEffects])
   ],
-  declarations: [
-    HeroListComponent,
-    HeroComponent
-  ],
   providers: [
     SwapiService
   ],
@@ -35,4 +35,4 @@ import { HeroesEffects } from './heroes.effects';
     HeroListComponent
   ]
 })
-export class HeroesModule {}
+export class HeroesModule { }

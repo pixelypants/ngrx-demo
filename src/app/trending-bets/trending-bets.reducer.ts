@@ -2,12 +2,14 @@ import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RacingBet } from "./models/trending-bets";
 import { RacingBetActions, RacingBetActionTypes } from './trending-bets.actions';
+
 export interface State {
   isLoading: boolean;
   error: HttpErrorResponse | null;
   data: RacingBet[] | null;
 }
 
+// need to not clash with heroes state
 export const initialState: State = {
   isLoading: false,
   error: null,
@@ -28,7 +30,7 @@ export function reducer(state = initialState, action: RacingBetActions): State {
       return {
         ...state,
         isLoading: false,
-        data: action.payload.results,
+        data: action.payload,
       };
 
     case RacingBetActionTypes.FetchRacingBetsError:

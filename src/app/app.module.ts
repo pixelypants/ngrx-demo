@@ -24,7 +24,7 @@ import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    // HeroesModule,
+    HeroesModule,
     TrendingBetsModule
   ],
   providers: [],

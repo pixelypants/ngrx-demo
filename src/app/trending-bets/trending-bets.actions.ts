@@ -4,8 +4,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export enum RacingBetActionTypes {
   FetchRacingBets = '[RacingBet] Load RacingBets',
-  FetchRacingBetsSuccess = '[Heroes] Load Heroes Success',
-  FetchRacingBetsError = '[Heroes] Load Heroes Error',
+  FetchRacingBetsSuccess = '[RacingBet] Load RacingBets Success',
+  FetchRacingBetsError = '[RacingBet] Load RacingBets Error',
 }
 
 export class FetchRacingBets implements Action {
