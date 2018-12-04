@@ -9,7 +9,6 @@ export interface State {
   data: RacingBet[] | null;
 }
 
-// need to not clash with heroes state
 export const initialState: State = {
   isLoading: false,
   error: null,
