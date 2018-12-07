@@ -10,19 +10,18 @@ import {
   RacingBetActionTypes,
   RacingBetActions
 } from './trending-bets.actions';
-import { Observable, of } from 'rxjs';
-import { map, switchMap, catchError, withLatestFrom } from 'rxjs/operators';
+import { Observable, of, timer } from 'rxjs';
+import { map, switchMap, catchError, withLatestFrom, repeat, distinct } from 'rxjs/operators';
 
 @Injectable()
 export class RacingBetEffects {
-
-  private toPayload = <T>(action: { payload: T }) => action.payload;
 
   @Effect()
   fetch$: Observable<RacingBetActions> = this.actions$
     .ofType(RacingBetActionTypes.FetchRacingBets)
     .pipe(
       withLatestFrom(this.store),
+      // distinct(),
       switchMap(([action, state]) =>
         this.service.getRacingBets().pipe(
           map(data => new FetchRacingBetsSuccess(data)),

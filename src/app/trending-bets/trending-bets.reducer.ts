@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Observable } from "rxjs";
 import { HttpErrorResponse } from '@angular/common/http';
 import { RacingBet } from "./models/trending-bets";
 import { RacingBetActions, RacingBetActionTypes } from './trending-bets.actions';
@@ -7,12 +8,14 @@ export interface State {
   isLoading: boolean;
   error: HttpErrorResponse | null;
   data: RacingBet[] | null;
+  test: string;
 }
 
 export const initialState: State = {
   isLoading: false,
   error: null,
   data: [],
+  test: "hello"
 };
 
 export function reducer(state = initialState, action: RacingBetActions): State {
@@ -29,7 +32,7 @@ export function reducer(state = initialState, action: RacingBetActions): State {
       return {
         ...state,
         isLoading: false,
-        data: action.payload.results,
+        data: action.payload,
       };
 
     case RacingBetActionTypes.FetchRacingBetsError:
