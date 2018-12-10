@@ -1,12 +1,3 @@
-<!-- <racing-bet *ngFor="let bet of racingBets$ | async;"
-            [bet]="bet">
-</racing-bet> -->
-<!-- <div [@openClose]="isOpen ? 'open' : 'closed'"
-     (@openClose.start)="onAnimationEvent($event)"
-     (@openClose.done)="onAnimationEvent($event)">Test state: {{ isOpen }}</div>
-<button class="button-place"
-        mat-raised-button
-        (click)="toggle()">toggle animation</button> -->
 <mat-card>
   <mat-card-header>
     <mat-card-title-group>
@@ -29,9 +20,9 @@
         <div class="mat-header-cell">Win</div>
         <div class="mat-header-cell">Place</div>
       </div>
-      <!-- <div *ngFor="let bet of racingBets$ | async;">blah</div> -->
       <racing-bet *ngFor="let bet of racingBets$ | async; trackBy: trackBet"
-                  [bet]="bet"></racing-bet>
+                  [bet]="bet"
+                  [logging]="logging"></racing-bet>
     </div>
   </mat-card-content>
 </mat-card>
