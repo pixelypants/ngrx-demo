@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +15,7 @@ import { RacingBetListComponent } from './racing-bet-list/racing-bet-list.compon
 import { EffectsModule } from '@ngrx/effects';
 import { RacingBetEffects } from './trending-bets.effects';
 import { TrendingBetsService } from "./trending-bets.service";
+
 @NgModule({
   declarations: [
     RacingBetComponent,
@@ -22,6 +24,7 @@ import { TrendingBetsService } from "./trending-bets.service";
   imports: [
     CommonModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatCardModule,
     MatButtonModule,
