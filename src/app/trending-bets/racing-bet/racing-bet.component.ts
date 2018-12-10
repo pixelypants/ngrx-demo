@@ -1,5 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Store, createSelector, select } from '@ngrx/store';
 import { RacingBet } from "../models/trending-bets";
+import { State } from "../trending-bets.reducer";
 import {
   trigger,
   state,
@@ -8,6 +10,8 @@ import {
   transition,
   AnimationEvent
 } from '@angular/animations';
+import { timer, Observable } from 'rxjs';
+import * as betsSelectors from '../../reducers/index';
 
 @Component({
   selector: 'racing-bet',
@@ -26,9 +30,23 @@ import {
   ],
 })
 export class RacingBetComponent {
-  @Input() bet: RacingBet;
+  @Input() id: string;
+  // @Input() bet: RacingBet;
 
+  // bet$: Observable<RacingBet>;
+  bet$: RacingBet;
   isUpdated = false;
+
+  constructor(private store: Store<State>) { }
+
+  ngOnInit() {
+    // this.bet$ = this.store.select(betsSelectors.selectTrendingBetsRacingEntities).subscribe();
+    this.store.select(betsSelectors.selectTrendingBetRacing(this.id)).subscribe(bet => this.bet$ = bet);
+    //this.bet$.subscribe(bet => console.log(bet.propositionNumber))
+    // this.bet$ = this.store.pipe(
+    //   select(betsSelectors.selectTrendingBetRacing(this.id))
+    // );
+  }
 
   toggle() {
     this.isUpdated = !this.isUpdated;

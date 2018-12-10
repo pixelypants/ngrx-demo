@@ -14,12 +14,7 @@ export class FetchRacingBets implements Action {
 
 export class FetchRacingBetsSuccess implements Action {
   readonly type = RacingBetActionTypes.FetchRacingBetsSuccess;
-  // public payload: RacingBetResponse = {
-  //   results: []
-  // }
-  constructor(public payload: RacingBet[]) {
-    //this.payload.results = results;
-  }
+  constructor(public payload: RacingBet[]) { }
 }
 
 export class FetchRacingBetsError implements Action {

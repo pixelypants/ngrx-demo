@@ -11,6 +11,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
 
+// Normalise state
+// https://www.youtube.com/watch?v=pffEkpuZpPo
+
 @NgModule({
   declarations: [
     AppComponent,

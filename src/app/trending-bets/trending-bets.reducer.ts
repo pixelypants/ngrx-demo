@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Observable } from "rxjs";
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RacingBet } from "./models/trending-bets";
 import { RacingBetActions, RacingBetActionTypes } from './trending-bets.actions';
@@ -7,40 +7,43 @@ import { RacingBetActions, RacingBetActionTypes } from './trending-bets.actions'
 export interface State {
   isLoading: boolean;
   error: HttpErrorResponse | null;
-  data: RacingBet[] | null;
-  test: string;
+  trendingBetsRacing: RacingBet[] | null;
 }
 
-export const initialState: State = {
-  isLoading: false,
-  error: null,
-  data: [],
-  test: "hello"
-};
+export interface trendingBetsRacingState extends EntityState<RacingBet> { }
 
-export function reducer(state = initialState, action: RacingBetActions): State {
+export const trendingBetsRacingAdapter: EntityAdapter<RacingBet> = createEntityAdapter<RacingBet>({
+  selectId: (bet: RacingBet) => bet.propositionNumber,
+  sortComparer: false
+});
+
+export const initialState: trendingBetsRacingState = trendingBetsRacingAdapter.getInitialState();
+
+export function reducer(state = initialState, action: RacingBetActions): trendingBetsRacingState {
   switch (action.type) {
 
-    case RacingBetActionTypes.FetchRacingBets:
-      return {
-        ...state,
-        isLoading: true,
-        error: null
-      };
+    // case RacingBetActionTypes.FetchRacingBets:
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //     error: null
+    //   };
 
     case RacingBetActionTypes.FetchRacingBetsSuccess:
+      // return trendingBetsRacingAdapter.updateMany(
+      //   action.payload.map((bet) => Object.assign({}, { id: bet.propositionNumber, changes: bet })),
+      //   { ...state, loaded: true, loading: false }
+      // );
       return {
-        ...state,
-        isLoading: false,
-        data: action.payload,
+        ...trendingBetsRacingAdapter.addAll(action.payload, state)
       };
 
-    case RacingBetActionTypes.FetchRacingBetsError:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
-      };
+    // case RacingBetActionTypes.FetchRacingBetsError:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     error: action.payload
+    //   };
 
     default:
       return state;

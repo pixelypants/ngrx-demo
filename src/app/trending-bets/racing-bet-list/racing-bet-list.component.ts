@@ -3,11 +3,7 @@ import { Store, createSelector } from '@ngrx/store';
 import { timer, Observable } from 'rxjs';
 import { State } from "../trending-bets.reducer";
 import { FetchRacingBets } from '../trending-bets.actions';
-import {
-  getRacingBets,
-  getIsRacingBetsLoading,
-  getRacingBetsState
-} from '../../reducers/index';
+import * as betsSelectors from '../../reducers/index';
 import { RacingBet } from '../models/trending-bets';
 
 @Component({
@@ -18,16 +14,21 @@ import { RacingBet } from '../models/trending-bets';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RacingBetListComponent implements OnInit {
-  racingBets$: Observable<RacingBet[]>;
-  isLoading$: Observable<boolean>;
+  racingBetsIds$: Observable<string[] | number[]>;
+  // racingBets$: Observable<RacingBet[]>;
+  // isLoading$: Observable<boolean>;
 
   logging = false;
 
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.racingBets$ = this.store.select(getRacingBets);
-    this.isLoading$ = this.store.select(getIsRacingBetsLoading);
+    this.racingBetsIds$ = this.store.select(betsSelectors.selectTrendingBetsRacingIds);
+    // this.racingBets$ = this.store.select(betsSelectors.selectTrendingBetsRacingEntities);
+    // this.isLoading$ = this.store.select(selectIsRacingBetsLoading);
+
+    this.store.dispatch(new FetchRacingBets())
+
     const source = timer(0, 5000);
     const subscribe = source.subscribe(_ => this.store.dispatch(new FetchRacingBets()));
 
@@ -35,10 +36,10 @@ export class RacingBetListComponent implements OnInit {
     // https://toddmotto.com/ngrx-store-understanding-state-selectors
   }
 
-  trackBet(index, bet) {
-    // console.log(index + " ::: " + bet.propositionNumber);
-    var temp = bet ? bet.propositionNumber : undefined;
-    // console.log(" >>>>> " + temp);
-    return temp;
-  }
+  // trackBet(index, bet) {
+  //   console.log(index + " ::: " + bet.propositionNumber);
+  //   var temp = bet ? bet.propositionNumber : undefined;
+  //   // console.log(" >>>>> " + temp);
+  //   return temp;
+  // }
 }

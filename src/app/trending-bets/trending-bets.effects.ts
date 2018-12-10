@@ -21,7 +21,7 @@ export class RacingBetEffects {
     .ofType(RacingBetActionTypes.FetchRacingBets)
     .pipe(
       withLatestFrom(this.store),
-      // distinct(),
+      //distinct(),
       switchMap(([action, state]) =>
         this.service.getRacingBets().pipe(
           map(data => new FetchRacingBetsSuccess(data)),
