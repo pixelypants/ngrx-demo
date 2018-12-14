@@ -9,9 +9,8 @@ import { RacingBetActions, RacingBetActionTypes } from './trending-bets.actions'
 // https://medium.com/@viestursv/how-to-get-store-state-in-ngrx-effect-fab9e9c8f087
 // https://brianflove.com/2018/03/21/master-rxjs-operators/
 
-export interface State {
+export interface State extends EntityState<RacingBet> {
   isLoading: boolean;
-  initLoadComplete: boolean;
   error: HttpErrorResponse | null;
   trendingBetsRacing: RacingBet[] | null;
 }
@@ -31,14 +30,6 @@ export const initialState: trendingBetsRacingState = trendingBetsRacingAdapter.g
 
 export function reducer(state = initialState, action: RacingBetActions): trendingBetsRacingState {
   switch (action.type) {
-
-    // case RacingBetActionTypes.FetchRacingBets:
-    //   return {
-    //     ...state,
-    //     isLoading: true,
-    //     error: null
-    //   };
-
     case RacingBetActionTypes.FetchRacingBetsAddAll:
       return {
         ...trendingBetsRacingAdapter.addAll(action.payload, state)
@@ -57,13 +48,6 @@ export function reducer(state = initialState, action: RacingBetActions): trendin
       return {
         ...trendingBetsRacingAdapter.removeMany(action.payload, state)
       };
-    // case RacingBetActionTypes.FetchRacingBetsError:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     error: action.payload
-    //   };
-
     default:
       return state;
   }
