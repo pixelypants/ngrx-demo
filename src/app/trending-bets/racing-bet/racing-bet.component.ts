@@ -12,6 +12,7 @@ import {
 } from '@angular/animations';
 import { timer, Observable } from 'rxjs';
 import * as betsSelectors from '../../reducers/index';
+import { __importDefault } from 'tslib';
 
 @Component({
   selector: 'racing-bet',
@@ -24,25 +25,23 @@ import * as betsSelectors from '../../reducers/index';
         style({
           backgroundColor: 'yellow'
         }),
-        animate('2.5s')
+        animate('0.5s')
       ]),
     ]),
   ],
 })
 export class RacingBetComponent {
   @Input() id: string;
-  // @Input() bet: RacingBet;
+  @Input() bet: RacingBet;
 
-  // bet$: Observable<RacingBet>;
-  bet$: RacingBet;
   isUpdated = false;
 
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
     // this.bet$ = this.store.select(betsSelectors.selectTrendingBetsRacingEntities).subscribe();
-    this.store.select(betsSelectors.selectTrendingBetRacing(this.id)).subscribe(bet => this.bet$ = bet);
-    //this.bet$.subscribe(bet => console.log(bet.propositionNumber))
+    // this.store.select(betsSelectors.selectTrendingBetRacing(this.id)).subscribe(bet => this.bet$ = bet);
+    // this.bet$.subscribe(bet => console.log(bet.propositionNumber))
     // this.bet$ = this.store.pipe(
     //   select(betsSelectors.selectTrendingBetRacing(this.id))
     // );

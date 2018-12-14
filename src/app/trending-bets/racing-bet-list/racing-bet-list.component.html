@@ -20,12 +20,12 @@
         <div class="mat-header-cell">Win</div>
         <div class="mat-header-cell">Place</div>
       </div>
-      <!-- <racing-bet *ngFor="let bet of racingBets$ | async; trackBy: trackBet"
+      <racing-bet *ngFor="let bet of racingBets$ | async; trackBy: trackBet"
                   [bet]="bet"
-                  [logging]="logging"></racing-bet> -->
-      <racing-bet *ngFor="let id of racingBetsIds$ | async;"
-                  [id]="id"
                   [logging]="logging"></racing-bet>
+      <!-- <racing-bet *ngFor="let id of racingBetsIds$ | async;"
+                  [id]="id"
+                  [logging]="logging"></racing-bet> -->
     </div>
   </mat-card-content>
 </mat-card>

@@ -14,6 +14,9 @@ import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
 // Normalise state
 // https://www.youtube.com/watch?v=pffEkpuZpPo
 
+// @ngrx/entity
+// https://blog.angular-university.io/ngrx-entity/
+
 @NgModule({
   declarations: [
     AppComponent,
