@@ -27,10 +27,10 @@ export class RacingBetListComponent implements OnInit {
     this.racingBets$ = this.store.select(betsSelectors.selectAllTrendingBetsRacing);
     // this.isLoading$ = this.store.select(selectIsRacingBetsLoading);
 
-    // this.store.dispatch(new FetchRacingBets());
+    this.store.dispatch(new FetchRacingBetsInit());
 
-    const source = timer(0, 5000);
-    const subscribe = source.subscribe(_ => this.store.dispatch(new FetchRacingBets()));
+    // const source = timer(0, 5000);
+    // const subscribe = source.subscribe(_ => this.store.dispatch(new FetchRacingBets()));
 
     // Lynda.com tut up to here
     // https://toddmotto.com/ngrx-store-understanding-state-selectors

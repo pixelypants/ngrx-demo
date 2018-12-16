@@ -6,7 +6,7 @@ import { Update } from '@ngrx/entity';
 export enum RacingBetActionTypes {
   FetchRacingBetsInit = '[RacingBet] Load RacingBets Init',
   FetchRacingBets = '[RacingBet] Load RacingBets',
-  FetchRacingBetsUpdateMany = '[RacingBet] Load RacingBets Update Many',
+  FetchRacingBetsUpsertMany = '[RacingBet] Load RacingBets Upser Many',
   FetchRacingBetsDeleteMany = '[RacingBet] Load RacingBets Delete Many',
   FetchRacingBetsAddMany = '[RacingBet] Load RacingBets Add Many',
   FetchRacingBetsAddAll = '[RacingBet] Load RacingBets Add All',
@@ -19,8 +19,8 @@ export class FetchRacingBetsInit implements Action {
 export class FetchRacingBets implements Action {
   readonly type = RacingBetActionTypes.FetchRacingBets;
 }
-export class FetchRacingBetsUpdateMany implements Action {
-  readonly type = RacingBetActionTypes.FetchRacingBetsUpdateMany;
+export class FetchRacingBetsUpsertMany implements Action {
+  readonly type = RacingBetActionTypes.FetchRacingBetsUpsertMany;
   constructor(public payload: RacingBet[]) { }
 }
 export class FetchRacingBetsDeleteMany implements Action {
@@ -45,5 +45,5 @@ export type RacingBetActions =
   FetchRacingBetsAddAll |
   FetchRacingBetsAddMany |
   FetchRacingBetsDeleteMany |
-  FetchRacingBetsUpdateMany |
+  FetchRacingBetsUpsertMany |
   FetchRacingBetsError;
