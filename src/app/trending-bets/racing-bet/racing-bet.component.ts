@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Store, createSelector, select } from '@ngrx/store';
 import { RacingBet } from "../models/trending-bets";
-import { State } from "../trending-bets.reducer";
+import { TrendingBetsRacingState } from "../trending-bets.reducer";
 import {
   trigger,
   state,
@@ -36,7 +36,7 @@ export class RacingBetComponent {
 
   isUpdated = false;
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<TrendingBetsRacingState>) { }
 
   ngOnInit() {
     // this.bet$ = this.store.select(betsSelectors.selectTrendingBetsRacingEntities).subscribe();

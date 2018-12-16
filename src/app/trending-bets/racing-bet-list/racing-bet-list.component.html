@@ -3,7 +3,6 @@
     <mat-card-title-group>
       <mat-card-title>
         <strong>Trending Bets</strong>
-        <!-- <i class="material-icons">whatshot</i> -->
       </mat-card-title>
       <mat-card-subtitle>Racing</mat-card-subtitle>
     </mat-card-title-group>
@@ -23,18 +22,15 @@
       <racing-bet *ngFor="let bet of racingBets$ | async; trackBy: trackBet"
                   [bet]="bet"
                   [logging]="logging"></racing-bet>
-      <!-- <racing-bet *ngFor="let id of racingBetsIds$ | async;"
-                  [id]="id"
-                  [logging]="logging"></racing-bet> -->
     </div>
   </mat-card-content>
 </mat-card>
 
-<!-- <div class="loader__bg"
+<div class="loader__bg"
      *ngIf="isLoading$ | async">
   <mat-spinner class="loader"
                color="accent"
                mode="indeterminate"
                [diameter]="40"
                [value]="25"></mat-spinner>
-</div> -->
+</div>

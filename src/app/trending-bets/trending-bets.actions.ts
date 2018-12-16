@@ -41,6 +41,7 @@ export class FetchRacingBetsError implements Action {
 }
 
 export type RacingBetActions =
+  FetchRacingBetsInit |
   FetchRacingBets |
   FetchRacingBetsAddAll |
   FetchRacingBetsAddMany |

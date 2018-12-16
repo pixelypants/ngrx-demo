@@ -1,10 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, createSelector } from '@ngrx/store';
 import { timer, Observable } from 'rxjs';
-import { State } from "../trending-bets.reducer";
-import { FetchRacingBets, FetchRacingBetsInit } from '../trending-bets.actions';
-import * as betsSelectors from '../../reducers/index';
+import { TrendingBetsRacingState, selectTrendingBetsRacingEntities, selectTrendingBetRacingLoading, selectAllTrendingBetsRacing, selectTrendingBetRacingInitLoaded } from "../trending-bets.reducer";
+import { FetchRacingBets, FetchRacingBetsInit, FetchRacingBetsAddMany } from '../trending-bets.actions';
 import { RacingBet } from '../models/trending-bets';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'racing-bet-list',
@@ -14,21 +14,33 @@ import { RacingBet } from '../models/trending-bets';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RacingBetListComponent implements OnInit {
-  // racingBetsIds$: Observable<string[] | number[]>;
   racingBets$: Observable<RacingBet[]>;
-  // isLoading$: Observable<boolean>;
+  isLoading$: Observable<boolean>;
 
   logging = false;
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<TrendingBetsRacingState>) { }
 
   ngOnInit() {
-    // this.racingBetsIds$ = this.store.select(betsSelectors.selectTrendingBetsRacingIds);
-    this.racingBets$ = this.store.select(betsSelectors.selectAllTrendingBetsRacing);
-    // this.isLoading$ = this.store.select(selectIsRacingBetsLoading);
+    // this.store.select(selectTrendingBetRacingInitLoaded).pipe(
+    //   tap(() => {
+    //     console.log("<===========>");
+    //     const source = timer(0, 5000);
+    //     const subscribe = source.subscribe(_ => this.store.dispatch(new FetchRacingBets()));
+    //   }))
+    this.racingBets$ = this.store.select(selectAllTrendingBetsRacing);
+    this.isLoading$ = this.store.select(selectTrendingBetRacingLoading).pipe(
+      tap((x) => {
+        console.log("<===========>");
+        // const source = timer(0, 5000);
+        // const subscribe = source.subscribe(_ => this.store.dispatch(new FetchRacingBets()));
+      }));
+    //this.store.dispatch(new FetchRacingBetsInit());
 
-    this.store.dispatch(new FetchRacingBetsInit());
+    const source = timer(0, 5000);
+    const subscribe = source.subscribe(() => this.store.dispatch(new FetchRacingBets()));
 
+    // Need to find a way to manage smart updating
     // const source = timer(0, 5000);
     // const subscribe = source.subscribe(_ => this.store.dispatch(new FetchRacingBets()));
 

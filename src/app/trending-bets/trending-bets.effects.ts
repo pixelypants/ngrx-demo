@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { State } from './trending-bets.reducer';
+import { TrendingBetsRacingState, selectRacingBetsState } from './trending-bets.reducer';
 import { TrendingBetsService } from './trending-bets.service';
 import {
-  FetchRacingBets,
   FetchRacingBetsError,
   FetchRacingBetsAddAll,
   FetchRacingBetsAddMany,
-  FetchRacingBetsDeleteMany,
   RacingBetActionTypes,
-  RacingBetActions,
-  FetchRacingBetsUpsertMany
 } from './trending-bets.actions';
 import { Observable, of, timer } from 'rxjs';
 import { map, switchMap, catchError, withLatestFrom, repeat, distinct, tap, mapTo, filter, merge } from 'rxjs/operators';
-import { RacingBetResponse, RacingBet } from "./models/trending-bets";
-import * as fromReducerIndex from "../reducers/index";
 
 // Effect patterns 2 or more streams and combine when both are returned and retun final action with concatinated payload
 // https://medium.com/default-to-open/angular-splitter-and-aggregation-patterns-for-ngrx-effects-c6f2908edf26
@@ -52,10 +46,11 @@ export class RacingBetEffects {
         this.service$.getRacingBets()
           .pipe(
             tap(() => console.log("(trending-bets.effects) RacingBetActionTypes.FetchRacingBets ")),
-            withLatestFrom(this.store$.select(fromReducerIndex.selectRacingBetsState)),
+            withLatestFrom(this.store$.select(selectRacingBetsState)),
             switchMap(([results, state]) => [
               //new FetchRacingBetsDeleteMany(results.pipe(merge(state))),
-              new FetchRacingBetsUpsertMany(results)
+              //new FetchRacingBetsUpsertMany(results)
+              new FetchRacingBetsAddMany(results)
             ]),
             catchError(err => of(new FetchRacingBetsError(err))
             )
@@ -88,6 +83,6 @@ export class RacingBetEffects {
   //  );
 
   constructor(private actions$: Actions,
-    private store$: Store<State>,
+    private store$: Store<TrendingBetsRacingState>,
     private service$: TrendingBetsService) { }
 }
