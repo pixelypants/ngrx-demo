@@ -35,9 +35,9 @@ export class RacingBetListComponent implements OnInit {
         // const source = timer(0, 5000);
         // const subscribe = source.subscribe(_ => this.store.dispatch(new FetchRacingBets()));
       }));
-    //this.store.dispatch(new FetchRacingBetsInit());
+    this.store.dispatch(new FetchRacingBetsInit());
 
-    const source = timer(0, 5000);
+    const source = timer(20000, 60000);
     const subscribe = source.subscribe(() => this.store.dispatch(new FetchRacingBets()));
 
     // Need to find a way to manage smart updating

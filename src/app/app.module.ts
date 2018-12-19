@@ -10,6 +10,11 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
+import { BetSlipModule } from "./bet-slip/bet-slip.module";
+
+//For InMemory testing 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { TestData } from './app-test-data-db';
 
 // Normalise state
 // https://www.youtube.com/watch?v=pffEkpuZpPo
@@ -28,7 +33,9 @@ import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    TrendingBetsModule
+    InMemoryWebApiModule.forRoot(TestData),
+    TrendingBetsModule,
+    BetSlipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

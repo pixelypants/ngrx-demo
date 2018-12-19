@@ -20,4 +20,11 @@ export class TrendingBetsService {
 
     return this.http.get<RacingBet[]>(link, options);
   }
+
+  getRacingBets_mocked(url: string): Observable<RacingBet[]> {
+    const options = {
+      params: {}
+    };
+    return this.http.get<RacingBet[]>(url, options);
+  }
 }

@@ -7,6 +7,8 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RacingBet } from "./models/trending-bets";
 import { RacingBetActions, RacingBetActionTypes } from './trending-bets.actions';
+import { Observable, of, timer } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators';
 
 // Need to Change the effect to send CRUD depending on the resulted payload
 // https://medium.com/@alexmaisiura/angular-ngrx-data-state-management-and-crud-for-five-minutes-c71041cca917
@@ -78,6 +80,16 @@ export const selectTrendingBetRacingInitLoaded = createSelector(
   selectRacingBetsState,
   (state: TrendingBetsRacingState) => state.initLoaded
 );
+
+// export const selectTrendingBetRacing_toDelete = (results: Observable<RacingBet[]>) => createSelector(
+//   selectRacingBetsState,
+//   (state: TrendingBetsRacingState) => {
+//     const localState$ = of(state.ids);
+//     const returnResults$ = results.
+
+//     return [1, 2, 3];
+//   }
+// );
 
 export const selectTrendingBetRacingLoading = createSelector(
   selectRacingBetsState,
