@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { TrendingBetsRacingState, selectRacingBetsState } from './trending-bets.reducer';
+import * as fromSelectors from './trending-bets.reducer';
 import { TrendingBetsService } from './trending-bets.service';
 import {
   FetchRacingBetsError,
   FetchRacingBetsAddAll,
   FetchRacingBetsAddMany,
+  FetchRacingBetsUpsertMany,
   RacingBetActionTypes,
+  FetchRacingBetsSuccess,
+  FetchRacingBetsDeleteMany,
+  FetchRacingBetsRemoveAll,
 } from './trending-bets.actions';
 import { Observable, of, timer } from 'rxjs';
 import { map, switchMap, catchError, withLatestFrom, repeat, distinct, tap, mapTo, filter, merge, combineLatest, concatMap } from 'rxjs/operators';
-
 // Effect patterns 2 or more streams and combine when both are returned and retun final action with concatinated payload
 // https://medium.com/default-to-open/angular-splitter-and-aggregation-patterns-for-ngrx-effects-c6f2908edf26
 // Good vidoe talk from article: https://www.youtube.com/watch?v=FQ6fzkHvCEY&t=1076s
@@ -56,10 +60,13 @@ export class RacingBetEffects {
           .pipe(
             tap(() => console.log("(trending-bets.effects) RacingBetActionTypes.FetchRacingBets ")),
             withLatestFrom(this.store$.select(selectRacingBetsState)),
+            // Multiple actions from one effect: https://medium.com/@amcdnl/dispatching-multiple-actions-from-ngrx-effects-c1447ceb6b22
             switchMap(([results, state]) => [
-              //new FetchRacingBetsDeleteMany(results.pipe(merge(state))),
-              //new FetchRacingBetsUpsertMany(results)
-              new FetchRacingBetsAddMany(results)
+              new FetchRacingBetsDeleteMany(results.map(itm => itm.propositionNumber)),
+              new FetchRacingBetsUpsertMany(results),
+              // new FetchRacingBetsAddMany(results)
+              // new FetchRacingBetsRemoveAll(),
+              // new FetchRacingBetsSuccess(results)
             ]),
             catchError(err => of(new FetchRacingBetsError(err))
             )

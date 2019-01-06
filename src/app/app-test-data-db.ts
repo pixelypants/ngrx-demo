@@ -5,6 +5,20 @@ export class TestData implements InMemoryDbService {
         let initTrendingBetsRacing = [
             {
                 isFutures: false,
+                meetingName: "aaa",
+                location: "aaa",
+                raceType: "a",
+                raceNumber: 1,
+                raceName: "aaa",
+                runnerNumber: 1,
+                runnerName: "aaa MASTER",
+                returnWin: 3.3,
+                returnPlace: 3.3,
+                bettingStatus: "Open",
+                propositionNumber: 151000
+            },
+            {
+                isFutures: false,
                 meetingName: "DOOMBEN",
                 location: "QLD",
                 raceType: "R",
@@ -44,106 +58,65 @@ export class TestData implements InMemoryDbService {
                 returnPlace: 1.4,
                 bettingStatus: "Open",
                 propositionNumber: 150803
-            },
-            {
-                isFutures: false,
-                meetingName: "CAULFIELD",
-                location: "VIC",
-                raceType: "R",
-                raceNumber: 4,
-                raceName: "LADBROKES LIVE STREAMING HANDICAP (SAME)",
-                runnerNumber: 9,
-                runnerName: "LYNCH MOB",
-                returnWin: 8.5,
-                returnPlace: 2.4,
-                bettingStatus: "Open",
-                propositionNumber: 150789
-            },
-            {
-                isFutures: false,
-                meetingName: "STRATHALBYN",
-                location: "SA",
-                raceType: "R",
-                raceNumber: 5,
-                raceName: "TOFFISH CLASS 2 HANDICAP (SAME)",
-                runnerNumber: 1,
-                runnerName: "FULTON STREET",
-                returnWin: 2,
-                returnPlace: 1.35,
-                bettingStatus: "Open",
-                propositionNumber: 150931
             }
         ];
+        // ===============================
         let updateTrendingBetsRacing = [
             {
                 isFutures: false,
-                meetingName: "DOOMBEN",
+                meetingName: "SAME",
+                location: "aaa",
+                raceType: "a",
+                raceNumber: 1,
+                raceName: "aaa",
+                runnerNumber: 1,
+                runnerName: "aaa MASTER",
+                returnWin: 3.3,
+                returnPlace: 3.3,
+                bettingStatus: "Open",
+                propositionNumber: 151000
+            },
+            {
+                isFutures: false,
+                meetingName: "NEW",
                 location: "QLD",
                 raceType: "R",
                 raceNumber: 8,
-                raceName: "ICANIWILL CLASS 5 HANDICAP (UPDATE)",
+                raceName: "ICANIWILL CLASS 5 HANDICAP (TO_UPDATE)",
                 runnerNumber: 10,
                 runnerName: "DREAM MASTER",
-                returnWin: 6.66,
-                returnPlace: 6.66,
+                returnWin: 2.2,
+                returnPlace: 1.22,
                 bettingStatus: "Open",
                 propositionNumber: 151070
             },
             {
                 isFutures: false,
-                meetingName: "CAULFIELD",
+                meetingName: "NEW",
                 location: "VIC",
                 raceType: "R",
-                raceNumber: 4,
+                raceNumber: 1,
                 raceName: "LADBROKES LIVE STREAMING HANDICAP (TO_DELETE)",
-                runnerNumber: 4,
-                runnerName: "VON MYSTIC",
-                returnWin: 0.00,
-                returnPlace: 0.00,
+                runnerNumber: 1,
+                runnerName: "VON MYSTIC (1)",
+                returnWin: 1.1,
+                returnPlace: 1.1,
                 bettingStatus: "Open",
-                propositionNumber: 150666
+                propositionNumber: 150785
             },
             {
                 isFutures: false,
-                meetingName: "CAULFIELD",
+                meetingName: "NEW",
                 location: "VIC",
                 raceType: "R",
-                raceNumber: 5,
+                raceNumber: 6,
                 raceName: "LADBROKES MULTIVERSE HANDICAP (SAME)",
                 runnerNumber: 3,
                 runnerName: "CRITICAL THINKING",
-                returnWin: 3.2,
-                returnPlace: 1.4,
+                returnWin: 6.66,
+                returnPlace: 6.66,
                 bettingStatus: "Open",
-                propositionNumber: 150803
-            },
-            {
-                isFutures: false,
-                meetingName: "CAULFIELD",
-                location: "VIC",
-                raceType: "R",
-                raceNumber: 4,
-                raceName: "LADBROKES LIVE STREAMING HANDICAP (SAME)",
-                runnerNumber: 9,
-                runnerName: "LYNCH MOB",
-                returnWin: 8.5,
-                returnPlace: 2.4,
-                bettingStatus: "Open",
-                propositionNumber: 150789
-            },
-            {
-                isFutures: false,
-                meetingName: "STRATHALBYN",
-                location: "SA",
-                raceType: "R",
-                raceNumber: 5,
-                raceName: "TOFFISH CLASS 2 HANDICAP (SAME)",
-                runnerNumber: 1,
-                runnerName: "FULTON STREET",
-                returnWin: 2,
-                returnPlace: 1.35,
-                bettingStatus: "Open",
-                propositionNumber: 150931
+                propositionNumber: 150666
             }
         ];
 

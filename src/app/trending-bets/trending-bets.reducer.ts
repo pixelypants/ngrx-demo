@@ -7,8 +7,8 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RacingBet } from "./models/trending-bets";
 import { RacingBetActions, RacingBetActionTypes } from './trending-bets.actions';
-import { Observable, of, timer } from 'rxjs';
-import { map, flatMap } from 'rxjs/operators';
+import { Observable, of, timer, from } from 'rxjs';
+import { map, flatMap, tap, merge, find, distinct, skip, concat, concatMap, combineLatest, filter, scan, takeWhile, skipUntil, findIndex } from 'rxjs/operators';
 
 // Need to Change the effect to send CRUD depending on the resulted payload
 // https://medium.com/@alexmaisiura/angular-ngrx-data-state-management-and-crud-for-five-minutes-c71041cca917
@@ -56,14 +56,33 @@ export function reducer(state = initialState, action: RacingBetActions): Trendin
       return {
         ...trendingBetsRacingAdapter.addMany(action.payload, state)
       };
+    case RacingBetActionTypes.FetchRacingBetsSuccess:
+      return {
+        ...trendingBetsRacingAdapter.addAll(action.payload, state)
+      };
+    case RacingBetActionTypes.FetchRacingBetsRemoveAll:
+      return {
+        ...trendingBetsRacingAdapter.removeAll(state)
+      };
     case RacingBetActionTypes.FetchRacingBetsUpsertMany:
       return {
         ...trendingBetsRacingAdapter.upsertMany(action.payload, state)
         // action.payload.map((bet) => Object.assign({}, { id: bet.propositionNumber, changes: bet })),
       };
     case RacingBetActionTypes.FetchRacingBetsDeleteMany:
+      // Merging streams: https://blog.angularindepth.com/learn-to-combine-rxjs-sequences-with-super-intuitive-interactive-diagrams-20fce8e6511
+      const deleteItems = []
+      const filterDeleteItems = from(action.payload).pipe(
+        concat(state.ids),
+        distinct(),
+        skip(action.payload.length),
+        map(x => x)
+      ).subscribe(val => {
+        console.log(`subscribe: ${val}`)
+        deleteItems.push(val)
+      })
       return {
-        ...trendingBetsRacingAdapter.removeMany(action.payload, state)
+        ...trendingBetsRacingAdapter.removeMany(deleteItems, state)
       };
     default:
       return state;
@@ -80,16 +99,6 @@ export const selectTrendingBetRacingInitLoaded = createSelector(
   selectRacingBetsState,
   (state: TrendingBetsRacingState) => state.initLoaded
 );
-
-// export const selectTrendingBetRacing_toDelete = (results: Observable<RacingBet[]>) => createSelector(
-//   selectRacingBetsState,
-//   (state: TrendingBetsRacingState) => {
-//     const localState$ = of(state.ids);
-//     const returnResults$ = results.
-
-//     return [1, 2, 3];
-//   }
-// );
 
 export const selectTrendingBetRacingLoading = createSelector(
   selectRacingBetsState,
