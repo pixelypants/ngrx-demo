@@ -8,6 +8,7 @@ export enum RacingBetActionTypes {
   FetchRacingBetsInit = '[RacingBet] Load RacingBets Init',
   FetchRacingBets = '[RacingBet] Load RacingBets',
   FetchRacingBetsUpsertMany = '[RacingBet] Load RacingBets Upser Many',
+  FetchRacingBetsUpdateMany = '[RacingBet] Load RacingBets Update Many',
   FetchRacingBetsDeleteMany = '[RacingBet] Load RacingBets Delete Many',
   FetchRacingBetsAddMany = '[RacingBet] Load RacingBets Add Many',
   FetchRacingBetsAddAll = '[RacingBet] Load RacingBets Add All',

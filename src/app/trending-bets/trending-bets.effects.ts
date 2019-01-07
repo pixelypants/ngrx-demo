@@ -7,15 +7,12 @@ import { TrendingBetsService } from './trending-bets.service';
 import {
   FetchRacingBetsError,
   FetchRacingBetsAddAll,
-  FetchRacingBetsAddMany,
   FetchRacingBetsUpsertMany,
   RacingBetActionTypes,
-  FetchRacingBetsSuccess,
   FetchRacingBetsDeleteMany,
-  FetchRacingBetsRemoveAll,
 } from './trending-bets.actions';
-import { Observable, of, timer } from 'rxjs';
-import { map, switchMap, catchError, withLatestFrom, repeat, distinct, tap, mapTo, filter, merge, combineLatest, concatMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, switchMap, catchError, withLatestFrom, tap, } from 'rxjs/operators';
 // Effect patterns 2 or more streams and combine when both are returned and retun final action with concatinated payload
 // https://medium.com/default-to-open/angular-splitter-and-aggregation-patterns-for-ngrx-effects-c6f2908edf26
 // Good vidoe talk from article: https://www.youtube.com/watch?v=FQ6fzkHvCEY&t=1076s
@@ -64,39 +61,12 @@ export class RacingBetEffects {
             switchMap(([results, state]) => [
               new FetchRacingBetsDeleteMany(results.map(itm => itm.propositionNumber)),
               new FetchRacingBetsUpsertMany(results),
-              // new FetchRacingBetsAddMany(results)
-              // new FetchRacingBetsRemoveAll(),
-              // new FetchRacingBetsSuccess(results)
             ]),
             catchError(err => of(new FetchRacingBetsError(err))
             )
           )
       )
     )
-
-  // @Effect()
-  // loadPizzas$ = this.actions$.ofType(pizzaActions.LOAD_PIZZAS).pipe(
-  //   switchMap(() => {
-  //     return this.pizzaService
-  //       .getPizzas()
-  //       .pipe(
-  //         switchMap(pizzas => [
-  //           new pizzaActions.LoadPizzasSuccess(pizzas),
-  //           new pizzaActions.AnotherAction(pizzas)
-  //         ]),
-  //         catchError(error => of(new pizzaActions.LoadPizzasFail(error)))
-  //       );
-  //   })
-  // );
-
-  //   @Effect() save = this.update$.pipe(
-  //     map(action => action.payload),
-  //     switchMap(payload => this.myService.save(payload)),
-  //     switchMap(res => [
-  //         new Notification('save success'),
-  //         new SaveSuccess(res)
-  //     ])
-  //  );
 
   constructor(private actions$: Actions,
     private store$: Store<TrendingBetsRacingState>,

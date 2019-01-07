@@ -53,6 +53,14 @@ export function reducer(state = initialState, action: RacingBetActions): Trendin
         ...trendingBetsRacingAdapter.addAll(action.payload, { ...state, initLoaded: true, isLoading: false }),
       };
     case RacingBetActionTypes.FetchRacingBetsAddMany:
+      const uppsertItems = []
+      from(action.payload).pipe(
+        concat(of(state.entities)),
+        distinct(),
+      ).subscribe(val => {
+        console.log(`upsertMany: ${val}`)
+        uppsertItems.push(val)
+      })
       return {
         ...trendingBetsRacingAdapter.addMany(action.payload, state)
       };
@@ -71,14 +79,14 @@ export function reducer(state = initialState, action: RacingBetActions): Trendin
       };
     case RacingBetActionTypes.FetchRacingBetsDeleteMany:
       // Merging streams: https://blog.angularindepth.com/learn-to-combine-rxjs-sequences-with-super-intuitive-interactive-diagrams-20fce8e6511
-      const deleteItems = []
-      const filterDeleteItems = from(action.payload).pipe(
+      const deleteItems = [];
+      from(action.payload).pipe(
         concat(state.ids),
         distinct(),
         skip(action.payload.length),
         map(x => x)
       ).subscribe(val => {
-        console.log(`subscribe: ${val}`)
+        console.log(`Delete: ${val}`)
         deleteItems.push(val)
       })
       return {
