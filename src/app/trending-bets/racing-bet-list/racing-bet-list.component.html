@@ -25,6 +25,8 @@
   </mat-card-content>
 </mat-card>
 
+<div>{{isLoading$}}</div>
+
 <div class="loader__bg"
      *ngIf="isLoading$ | async">
   <mat-spinner class="loader"

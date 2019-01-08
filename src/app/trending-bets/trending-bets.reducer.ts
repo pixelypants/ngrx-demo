@@ -111,10 +111,7 @@ export const selectTrendingBetRacingInitLoaded = createSelector(
 export const selectTrendingBetRacingLoading = createSelector(
   selectRacingBetsState,
   (state: TrendingBetsRacingState) => {
-    if (!state.initLoaded) {
-      return state.isLoading
-    }
-    return false;
+    return state.isLoading && !state.initLoaded;
   }
 );
 export const {

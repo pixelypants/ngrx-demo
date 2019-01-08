@@ -4,14 +4,11 @@ import { RacingBet } from "../models/trending-bets";
 import { TrendingBetsRacingState } from "../trending-bets.reducer";
 import {
   trigger,
-  state,
   style,
   animate,
   transition,
   AnimationEvent
 } from '@angular/animations';
-import { timer, Observable } from 'rxjs';
-import * as betsSelectors from '../../reducers/index';
 import { __importDefault } from 'tslib';
 
 @Component({
@@ -38,18 +35,12 @@ export class RacingBetComponent {
 
   constructor(private store: Store<TrendingBetsRacingState>) { }
 
-  ngOnInit() {
-    // this.bet$ = this.store.select(betsSelectors.selectTrendingBetsRacingEntities).subscribe();
-    // this.store.select(betsSelectors.selectTrendingBetRacing(this.id)).subscribe(bet => this.bet$ = bet);
-    // this.bet$.subscribe(bet => console.log(bet.propositionNumber))
-    // this.bet$ = this.store.pipe(
-    //   select(betsSelectors.selectTrendingBetRacing(this.id))
-    // );
-  }
+  ngOnInit() { }
 
   toggle() {
     this.isUpdated = !this.isUpdated;
   }
+
   @Input() logging: boolean = false;
   onAnimationEvent(event: AnimationEvent) {
     if (!this.logging) {

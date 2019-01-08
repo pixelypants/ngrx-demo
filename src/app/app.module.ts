@@ -33,7 +33,7 @@ import { TestData } from './app-test-data-db';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    InMemoryWebApiModule.forRoot(TestData),
+    InMemoryWebApiModule.forRoot(TestData, { delay: 1500 }),
     TrendingBetsModule,
     BetSlipModule
   ],
