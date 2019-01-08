@@ -1,4 +1,5 @@
 <mat-card>
+
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>
@@ -9,7 +10,6 @@
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
-
     <div class="mat-table">
       <div class="mat-header-row">
         <div class="mat-cell">Prop#</div>
@@ -18,6 +18,13 @@
         <div class="mat-header-cell">Win</div>
         <div class="mat-header-cell">Place</div>
       </div>
+      <div class="loader__bg"
+           *ngIf="isLoading$ | async">
+        <mat-spinner class="loader"
+                     mode="indeterminate"
+                     [diameter]="40"
+                     [value]="25"></mat-spinner>
+      </div>
       <racing-bet *ngFor="let bet of racingBets$ | async; trackBy: trackBet"
                   [bet]="bet"
                   [logging]="logging"></racing-bet>
@@ -25,13 +32,11 @@
   </mat-card-content>
 </mat-card>
 
-<div>{{isLoading$}}</div>
-
-<div class="loader__bg"
-     *ngIf="isLoading$ | async">
-  <mat-spinner class="loader"
-               color="accent"
-               mode="indeterminate"
-               [diameter]="40"
-               [value]="25"></mat-spinner>
-</div>
+<!-- <div class="loader__bg"
+*ngIf="isLoading$ | async">
+<mat-spinner class="loader"
+          color="accent"
+          mode="indeterminate"
+          [diameter]="40"
+          [value]="25"></mat-spinner>
+</div> -->
