@@ -10,6 +10,7 @@ import {
   AnimationEvent
 } from '@angular/animations';
 import { __importDefault } from 'tslib';
+import * as fromBetslipActions from "../../bet-slip/bet-slip.actions";
 
 @Component({
   selector: 'racing-bet',
@@ -31,14 +32,12 @@ export class RacingBetComponent {
   @Input() id: string;
   @Input() bet: RacingBet;
 
-  isUpdated = false;
-
   constructor(private store: Store<TrendingBetsRacingState>) { }
 
   ngOnInit() { }
 
-  toggle() {
-    this.isUpdated = !this.isUpdated;
+  placeBet() {
+    this.store.dispatch(new fromBetslipActions.AddSingleBet(this.id))
   }
 
   @Input() logging: boolean = false;

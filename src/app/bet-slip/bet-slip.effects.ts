@@ -5,8 +5,5 @@ import { BetSlipActionTypes } from './bet-slip.actions';
 @Injectable()
 export class BetSlipEffects {
 
-  @Effect()
-  loadFoos$ = this.actions$.pipe(ofType(BetSlipActionTypes.LoadBetSlips));
-
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions) { }
 }

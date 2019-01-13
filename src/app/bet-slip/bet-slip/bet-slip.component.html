@@ -1,3 +1,5 @@
 <p>
   bet-slip works!
 </p>
+<bet-slip *ngFor="let bet of singleBets$ | async;"
+          [id]="bet"></bet-slip>

@@ -7,12 +7,11 @@
   <div class="mat-cell">{{bet.runnerNumber}}</div>
   <div class="mat-cell">
     <button class="button-win"
-            mat-raised-button
-            n>{{bet.returnWin}}</button>
+            mat-raised-button>{{bet.returnWin}}</button>
   </div>
   <div class="mat-cell">
     <button class="button-place"
             mat-raised-button
-            (click)="toggle()">{{bet.returnPlace}}</button>
+            (click)="placeBet()">{{bet.returnPlace}}</button>
   </div>
 </div>
