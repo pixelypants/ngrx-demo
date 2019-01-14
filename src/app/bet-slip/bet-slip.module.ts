@@ -17,7 +17,8 @@ import { BetSlipEffects } from "./bet-slip.effects";
 
 @NgModule({
   declarations: [
-    BetSlipComponent, BetRacingComponent
+    BetSlipComponent,
+    BetRacingComponent
   ],
   imports: [
     CommonModule,

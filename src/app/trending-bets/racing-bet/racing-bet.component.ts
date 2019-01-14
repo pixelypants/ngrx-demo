@@ -37,7 +37,7 @@ export class RacingBetComponent {
   ngOnInit() { }
 
   placeBet() {
-    this.store.dispatch(new fromBetslipActions.AddSingleBet(this.id))
+    this.store.dispatch(new fromBetslipActions.AddSingleBet(this.id.toString()))
   }
 
   @Input() logging: boolean = false;

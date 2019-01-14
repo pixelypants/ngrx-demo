@@ -1,3 +1,7 @@
-<p>
-  bet-racing works!
-</p>
+<mat-card *ngIf="bet$ | async as bet">
+  <div>{{bet.runnerNumber}} - {{bet.runnerName}}</div>
+  <div>Win - ${{bet.returnWin}}</div>
+  <div>Place ${{bet.returnPlace}}</div>
+  <button mat-raised-button
+          (click)="removeBet()">Remove Bet</button>
+</mat-card>

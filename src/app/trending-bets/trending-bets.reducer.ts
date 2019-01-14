@@ -99,7 +99,7 @@ export function reducer(state = initialState, action: RacingBetActions): Trendin
 
 // Selectors
 export const selectRacingBetsState = createFeatureSelector<TrendingBetsRacingState>('raceBets');
-export const selectTrendingBetRacing = (id: string) => createSelector(
+export const selectTrendingBetRacingById = (id: string) => createSelector(
   selectRacingBetsState,
   (state: TrendingBetsRacingState) => state.entities[id]
 );
