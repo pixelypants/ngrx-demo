@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { TrendingBetsModule } from "./trending-bets/trending-bets.module";
 import { BetSlipModule } from "./bet-slip/bet-slip.module";
+import { MatGridList } from '@angular/material/grid-list';
 
 //For InMemory testing 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -30,6 +31,7 @@ import { TestData } from './app-test-data-db';
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    // MatGridList,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),

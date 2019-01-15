@@ -1,5 +1,24 @@
-<p>
-  BetSlip
-</p>
-<bet-racing *ngFor="let bet of singleBets$ | async;"
-            [id]="bet"></bet-racing>
+<!-- <mat-card>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>
+        <strong>Trending Bets</strong>
+      </mat-card-title>
+      <mat-card-subtitle>Racing</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="mat-table">
+      <div class="mat-header-row">
+        <div class="mat-cell">Prop#</div>
+        <div class="mat-header-cell">Meeting</div>
+        <div class="mat-header-cell">Runner#</div>
+        <div class="mat-header-cell">Win</div>
+        <div class="mat-header-cell">Place</div>
+      </div> -->
+<bet-racing *ngFor="let id of singleBets$ | async;"
+            [id]="id"></bet-racing>
+<!-- </div>
+  </mat-card-content>
+</mat-card> -->

@@ -17,6 +17,7 @@ export function reducer(state = initialState, action: BetSlipActions): BetslipSt
   switch (action.type) {
 
     case BetSlipActionTypes.AddSingleBet:
+      //if (state.singleBetIds.find(id => id == action.payload)) return state;
       return {
         ...state,
         singleBetIds: state.singleBetIds.concat(action.payload)
